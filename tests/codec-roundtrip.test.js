@@ -4,9 +4,15 @@ const path = require('node:path');
 const { after, before, test } = require('node:test');
 
 const ggwaveFactory = require('../ggwave.js');
+const {
+  INAUDIBLE_SHIFT_FACTOR,
+  getProtocolId,
+  resampleBuffer,
+  restoreInaudibleSamples,
+} = require('../frequency-ranges.js');
 
 const SAMPLE_RATE = 48_000;
-const ENCODE_VOLUME = 25;
+const ENCODE_VOLUME = 35;
 const NOISE_LEVELS = [0, 0.01, 0.025, 0.05, 0.075, 0.1];
 
 function messageOfLength(prefix, length) {
@@ -21,6 +27,7 @@ const MESSAGES = [
   messageOfLength('Long payload: ', 80),
   messageOfLength('Maximum test payload: ', 120),
 ];
+const FREQUENCY_RANGES = ['audible', 'inaudible', 'ultrasound'];
 
 let ggwave;
 let parameters;
@@ -67,6 +74,20 @@ function rms(samples) {
   return Math.sqrt(sum / samples.length);
 }
 
+function simulateCapturedAudio(encodedSamples, range) {
+  // An AudioBuffer whose sample rate is above the AudioContext rate is
+  // resampled into fewer output samples during playback.
+  return range === 'inaudible'
+    ? resampleBuffer(encodedSamples, INAUDIBLE_SHIFT_FACTOR)
+    : encodedSamples;
+}
+
+function prepareForDecode(capturedSamples, range) {
+  return range === 'inaudible'
+    ? restoreInaudibleSamples(capturedSamples)
+    : capturedSamples;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -80,6 +101,7 @@ function renderReport(report) {
   const rows = report.results.map((result) => `
           <tr>
             <td><span class="status ${result.passed ? 'pass' : 'fail'}">${result.passed ? 'PASS' : 'FAIL'}</span></td>
+            <td>${escapeHtml(result.range)}</td>
             <td>${result.messageBytes}</td>
             <td>${(result.noiseAmplitude * 100).toFixed(1)}%</td>
             <td>${result.signalRms.toFixed(4)}</td>
@@ -131,12 +153,12 @@ function renderReport(report) {
     </section>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Result</th><th>Bytes</th><th>Noise</th><th>Signal RMS</th><th>Samples</th><th>Time</th><th>Message</th></tr></thead>
+        <thead><tr><th>Result</th><th>Range</th><th>Bytes</th><th>Noise</th><th>Signal RMS</th><th>Samples</th><th>Time</th><th>Message</th></tr></thead>
         <tbody>${rows}
         </tbody>
       </table>
     </div>
-    <footer>Generated ${escapeHtml(report.generatedAt)} · Node ${escapeHtml(report.nodeVersion)} · Protocol: GGWAVE_PROTOCOL_AUDIBLE_FAST · 48 kHz · encode volume 25</footer>
+    <footer>Generated ${escapeHtml(report.generatedAt)} · Node ${escapeHtml(report.nodeVersion)} · Audible, inaudible, and ultrasound fast protocols · 48 kHz · encode volume ${ENCODE_VOLUME}</footer>
   </main>
 </body>
 </html>`;
@@ -155,6 +177,7 @@ function writeReport() {
     passed: results.filter((result) => result.passed).length,
     failed: results.filter((result) => !result.passed).length,
     messageLengths: [...new Set(results.map((result) => result.messageBytes))],
+    frequencyRanges: FREQUENCY_RANGES,
     noiseLevels: NOISE_LEVELS,
     results,
   };
@@ -177,64 +200,69 @@ after(() => {
   writeReport();
 });
 
-test('GGWave returns the exact encoded message across lengths and noise levels', async (suite) => {
-  for (const [messageIndex, message] of MESSAGES.entries()) {
-    const originalLog = console.log;
-    let encodedBytes;
-    try {
-      console.log = () => {};
-      encodedBytes = ggwave.encode(
-        transmitter,
-        message,
-        ggwave.ProtocolId.GGWAVE_PROTOCOL_AUDIBLE_FAST,
-        ENCODE_VOLUME,
-      );
-    } finally {
-      console.log = originalLog;
-    }
-
-    assert.ok(encodedBytes.length > 0, `encoder returned audio for ${message.length}-byte message`);
-    const encodedSamples = byteViewToFloat32(encodedBytes);
-    const signalRms = rms(encodedSamples);
-
-    for (const [noiseIndex, noiseAmplitude] of NOISE_LEVELS.entries()) {
-      await suite.test(`${message.length} bytes with ${(noiseAmplitude * 100).toFixed(1)}% noise`, () => {
-        const started = process.hrtime.bigint();
-        const receiver = ggwave.init(parameters);
-        let decodedBytes;
-
-        try {
-          const noisySamples = addGaussianNoise(
-            encodedSamples,
-            noiseAmplitude,
-            0x57415645 + messageIndex * 101 + noiseIndex,
-          );
-          console.log = () => {};
-          decodedBytes = ggwave.decode(receiver, float32ToByteView(noisySamples));
-        } finally {
-          console.log = originalLog;
-          ggwave.free(receiver);
-        }
-
-        const decodedMessage = decodedBytes
-          ? new TextDecoder('utf-8', { fatal: true }).decode(decodedBytes)
-          : '';
-        const durationMs = Number(process.hrtime.bigint() - started) / 1_000_000;
-        const passed = decodedMessage === message;
-
-        results.push({
-          passed,
+test('GGWave returns the exact encoded message in every frequency range', async (suite) => {
+  for (const range of FREQUENCY_RANGES) {
+    for (const [messageIndex, message] of MESSAGES.entries()) {
+      const originalLog = console.log;
+      let encodedBytes;
+      try {
+        console.log = () => {};
+        encodedBytes = ggwave.encode(
+          transmitter,
           message,
-          messageBytes: Buffer.byteLength(message),
-          noiseAmplitude,
-          signalRms,
-          encodedSamples: encodedSamples.length,
-          durationMs,
-          decodedMessage,
-        });
+          getProtocolId(ggwave.ProtocolId, range, 1),
+          ENCODE_VOLUME,
+        );
+      } finally {
+        console.log = originalLog;
+      }
 
-        assert.equal(decodedMessage, message);
-      });
+      assert.ok(encodedBytes.length > 0, `encoder returned audio for ${range} ${message.length}-byte message`);
+      const encodedSamples = byteViewToFloat32(encodedBytes);
+      const capturedSamples = simulateCapturedAudio(encodedSamples, range);
+      const signalRms = rms(capturedSamples);
+
+      for (const [noiseIndex, noiseAmplitude] of NOISE_LEVELS.entries()) {
+        await suite.test(`${range}: ${message.length} bytes with ${(noiseAmplitude * 100).toFixed(1)}% noise`, () => {
+          const started = process.hrtime.bigint();
+          const receiver = ggwave.init(parameters);
+          let decodedBytes;
+
+          try {
+            const noisyCapturedSamples = addGaussianNoise(
+              capturedSamples,
+              noiseAmplitude,
+              0x57415645 + messageIndex * 101 + noiseIndex,
+            );
+            const samplesForDecode = prepareForDecode(noisyCapturedSamples, range);
+            console.log = () => {};
+            decodedBytes = ggwave.decode(receiver, float32ToByteView(samplesForDecode));
+          } finally {
+            console.log = originalLog;
+            ggwave.free(receiver);
+          }
+
+          const decodedMessage = decodedBytes
+            ? new TextDecoder('utf-8', { fatal: true }).decode(decodedBytes)
+            : '';
+          const durationMs = Number(process.hrtime.bigint() - started) / 1_000_000;
+          const passed = decodedMessage === message;
+
+          results.push({
+            passed,
+            range,
+            message,
+            messageBytes: Buffer.byteLength(message),
+            noiseAmplitude,
+            signalRms,
+            encodedSamples: capturedSamples.length,
+            durationMs,
+            decodedMessage,
+          });
+
+          assert.equal(decodedMessage, message);
+        });
+      }
     }
   }
 });

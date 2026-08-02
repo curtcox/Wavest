@@ -275,10 +275,8 @@ function getProtocolSelection() {
 
 function updateProtocolSelection() {
     const { speed, range } = getProtocolSelection();
-    const protocolIndex = speed + (range === 'audible' ? 0 : 3);
-
-    if (protocolsMap && protocolsMap[protocolIndex] !== undefined) {
-        currentProtocolId = protocolsMap[protocolIndex];
+    if (ggwave && ggwave.ProtocolId && window.WavestFrequencyRanges) {
+        currentProtocolId = window.WavestFrequencyRanges.getProtocolId(ggwave.ProtocolId, range, speed);
     }
 
     const speedLabels = ['NORMAL', 'FAST', 'FASTEST'];
@@ -486,8 +484,7 @@ function startAudioCapture() {
                     await handleDecodedBytes(decodedBytes);
                 } else {
                     // 2. Try decoding shifted (inaudible) range
-                    const shiftFactor = 1.0867;
-                    const resampled = resampleBuffer(channelDataCopy, shiftFactor);
+                    const resampled = window.WavestFrequencyRanges.restoreInaudibleSamples(channelDataCopy);
                     const resampledInt8 = convertTypedArray(resampled, Int8Array);
                     const decodedBytesShifted = ggwave.decode(ggwaveInstanceShifted, resampledInt8);
                     
@@ -635,7 +632,6 @@ async function transmitText(text, { clearInput = true, feedback = true } = {}) {
             try {
             // Encode payload to waveform floats using the selected protocol ID
             const { range } = getProtocolSelection();
-            const isInaudible = range === 'inaudible';
             const activeProto = currentProtocolId || (protocolsMap ? protocolsMap[1] : null);
             
             const waveformBuffer = ggwave.encode(
@@ -650,7 +646,7 @@ async function transmitText(text, { clearInput = true, feedback = true } = {}) {
                 const floatArray = convertTypedArray(waveformBuffer, Float32Array);
                 
                 // If protocol is inaudible, shift sample rate up by 1.0867
-                const playSampleRate = isInaudible ? Math.round(audioContext.sampleRate * 1.0867) : audioContext.sampleRate;
+                const playSampleRate = window.WavestFrequencyRanges.getPlaybackSampleRate(range, audioContext.sampleRate);
                 
                 // Create buffer source
                 const playBuffer = audioContext.createBuffer(1, floatArray.length, playSampleRate);
@@ -1041,20 +1037,6 @@ async function parseReceivedPacket(rawPayload) {
     }
     // Legacy fallback (no headers)
     return { sender: 'Legacy', message: rawPayload, encrypted: false, decrypted: true };
-}
-
-// Linear interpolation resampling buffer for the shifted inaudible range
-function resampleBuffer(inputBuffer, factor) {
-    const outputLength = Math.floor(inputBuffer.length / factor);
-    const outputBuffer = new Float32Array(outputLength);
-    for (let i = 0; i < outputLength; i++) {
-        const pos = i * factor;
-        const idx = Math.floor(pos);
-        const nextIdx = Math.min(inputBuffer.length - 1, idx + 1);
-        const weight = pos - idx;
-        outputBuffer[i] = (1 - weight) * inputBuffer[idx] + weight * inputBuffer[nextIdx];
-    }
-    return outputBuffer;
 }
 
 // Load secure settings from localStorage
