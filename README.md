@@ -3,7 +3,7 @@
 ### Wavest is a modernized demonstration of the amazing [GGWave](https://github.com/ggerganov/ggwave). 
 #### It allows any device with a microphone and speaker to communicate via audible or ultrasonic waves. Wavest also adds different audio modes, callsigns, and encryption.
 
-Enable **Live Keyboard Mode** in Settings to poll the message field and queue every typed character for transmission as soon as it is entered.
+Enable **Live Keyboard Mode** in Settings to poll the message field and queue typed characters for transmission. Keys accumulated during an active transmission are consolidated into the next audio payload.
 
 ## Try it [here](https://curtcox.github.io/Wavest/).
 

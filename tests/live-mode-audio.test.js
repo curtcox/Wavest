@@ -21,17 +21,22 @@ test('live page input sends and receives typed characters through audio', async 
   parameters.sampleRateOut = SAMPLE_RATE;
   const transmitter = ggwave.init(parameters);
   const received = [];
+  const transmittedBatches = [];
   let pageInput = '';
+  let releaseFirstBatch;
+  const firstBatchInFlight = new Promise((resolve) => { releaseFirstBatch = resolve; });
 
   const queue = new LiveKeyboardQueue({
     readValue: () => pageInput,
     clearValue: () => { pageInput = ''; },
-    transmit: async (character) => {
+    transmit: async (batch) => {
+      transmittedBatches.push(batch);
+      if (transmittedBatches.length === 1) await firstBatchInFlight;
       const receiver = ggwave.init(parameters);
       try {
         const encoded = ggwave.encode(
           transmitter,
-          character,
+          batch,
           ggwave.ProtocolId.GGWAVE_PROTOCOL_AUDIBLE_FAST,
           25,
         );
@@ -49,14 +54,16 @@ test('live page input sends and receives typed characters through audio', async 
 
   try {
     queue.start();
-    pageInput = 'Wav';
+    pageInput = 'Live';
     queue.poll();
-    pageInput = 'est!';
+    pageInput = 'Mode';
     queue.poll();
+    releaseFirstBatch();
     await queue.drain();
 
     assert.equal(pageInput, '', 'polled keyboard input is moved into the queue');
-    assert.equal(received.join(''), 'Wavest!');
+    assert.deepEqual(transmittedBatches, ['Live', 'Mode'], 'queued unsent keys are consolidated');
+    assert.equal(received.join(''), 'LiveMode');
     assert.equal(queue.pendingCount, 0);
   } finally {
     queue.stop();

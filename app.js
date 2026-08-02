@@ -164,7 +164,7 @@ function setupUIEventListeners() {
         liveKeyboardQueue = new window.WavestLiveMode.LiveKeyboardQueue({
             readValue: () => messageInput.value,
             clearValue: () => { messageInput.value = ''; },
-            transmit: (character) => transmitText(character, { clearInput: false, feedback: false }),
+            transmit: (batch) => transmitText(batch, { clearInput: false, feedback: false }),
             onStateChange: updateLiveModeStatus,
         });
         liveModeToggle.addEventListener('change', () => {

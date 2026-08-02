@@ -17,6 +17,7 @@
             this.queue = [];
             this.enabled = false;
             this.transmitting = false;
+            this.activeCount = 0;
             this.timer = null;
             this.drainPromise = null;
         }
@@ -55,16 +56,23 @@
             this.drainPromise = (async () => {
                 try {
                     while (this.queue.length > 0) {
-                        const character = this.queue.shift();
+                        // Consolidate everything waiting at the transmission boundary.
+                        // Keys typed while this batch is in flight remain queued and
+                        // become the next batch rather than creating one transmission
+                        // per character.
+                        const batch = this.queue.splice(0).join('');
+                        this.activeCount = Array.from(batch).length;
                         this.notify();
                         try {
-                            await this.transmit(character);
+                            await this.transmit(batch);
                         } catch (error) {
-                            console.error('Live character transmission failed:', error);
+                            console.error('Live batch transmission failed:', error);
                         }
+                        this.activeCount = 0;
                     }
                 } finally {
                     this.transmitting = false;
+                    this.activeCount = 0;
                     this.drainPromise = null;
                     this.notify();
                 }
@@ -73,7 +81,7 @@
         }
 
         get pendingCount() {
-            return this.queue.length + (this.transmitting ? 1 : 0);
+            return this.queue.length + this.activeCount;
         }
 
         notify() {
