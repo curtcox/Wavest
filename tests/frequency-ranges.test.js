@@ -6,6 +6,7 @@ const {
   INAUDIBLE_SHIFT_FACTOR,
   RANGE_NAMES,
   SPEED_NAMES,
+  createInaudibleReceivePipeline,
   getPlaybackSampleRate,
   getProtocolId,
   resampleBuffer,
@@ -87,4 +88,52 @@ test('every frequency range supports every transmission speed', async (suite) =>
 test('frequency range and speed validation rejects unsupported selections', () => {
   assert.throws(() => getProtocolId(ggwave.ProtocolId, 'subsonic', 1), /Unknown frequency range/);
   assert.throws(() => getProtocolId(ggwave.ProtocolId, 'audible', 3), /Unknown protocol speed/);
+});
+
+test('inaudible audio decodes when capture arrives in browser-sized chunks', async (suite) => {
+  const chunkSizes = [128, 1024, 2048];
+
+  for (const chunkSize of chunkSizes) {
+    for (const [speed, speedName] of SPEED_NAMES.entries()) {
+      await suite.test(`${speedName.toLowerCase()} with ${chunkSize}-sample chunks`, () => {
+        const originalLog = console.log;
+        const receiver = ggwave.init(parameters);
+        const receivePipeline = createInaudibleReceivePipeline(1024);
+        let decodedBytes = null;
+
+        try {
+          console.log = () => {};
+          const encodedBytes = ggwave.encode(
+            transmitter,
+            TEST_MESSAGE,
+            getProtocolId(ggwave.ProtocolId, 'inaudible', speed),
+            35,
+          );
+          const playbackSamples = resampleBuffer(
+            byteViewToFloat32(encodedBytes),
+            INAUDIBLE_SHIFT_FACTOR,
+          );
+          const capturedSamples = new Float32Array(playbackSamples.length + chunkSize * 4);
+          capturedSamples.set(playbackSamples);
+
+          for (let offset = 0; offset < capturedSamples.length; offset += chunkSize) {
+            const capturedChunk = capturedSamples.subarray(offset, offset + chunkSize);
+            for (const restoredChunk of receivePipeline.push(capturedChunk)) {
+              assert.equal(restoredChunk.length, 1024, 'decoder receives a complete frame');
+              const decoded = ggwave.decode(receiver, float32ToByteView(restoredChunk));
+              if (decoded && decoded.length > 0) decodedBytes = decoded;
+            }
+          }
+        } finally {
+          console.log = originalLog;
+          ggwave.free(receiver);
+        }
+
+        const decodedMessage = decodedBytes
+          ? new TextDecoder('utf-8', { fatal: true }).decode(decodedBytes)
+          : '';
+        assert.equal(decodedMessage, TEST_MESSAGE);
+      });
+    }
+  }
 });

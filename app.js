@@ -461,6 +461,7 @@ function startAudioCapture() {
 
         // Script processing tick (decoding mic data)
         let isProcessingAudio = false;
+        const inaudibleReceivePipeline = window.WavestFrequencyRanges.createInaudibleReceivePipeline(bufferSize);
         recorderNode.onaudioprocess = async (e) => {
             if (isTransmitting || isProcessingAudio) return;
 
@@ -484,9 +485,16 @@ function startAudioCapture() {
                     await handleDecodedBytes(decodedBytes);
                 } else {
                     // 2. Try decoding shifted (inaudible) range
-                    const resampled = window.WavestFrequencyRanges.restoreInaudibleSamples(channelDataCopy);
-                    const resampledInt8 = convertTypedArray(resampled, Int8Array);
-                    const decodedBytesShifted = ggwave.decode(ggwaveInstanceShifted, resampledInt8);
+                    let decodedBytesShifted = null;
+                    const restoredChunks = inaudibleReceivePipeline.push(channelDataCopy);
+                    for (const restoredChunk of restoredChunks) {
+                        const restoredInt8 = convertTypedArray(restoredChunk, Int8Array);
+                        const candidate = ggwave.decode(ggwaveInstanceShifted, restoredInt8);
+                        if (candidate && candidate.length > 0) {
+                            decodedBytesShifted = candidate;
+                            break;
+                        }
+                    }
                     
                     if (decodedBytesShifted && decodedBytesShifted.length > 0) {
                         await handleDecodedBytes(decodedBytesShifted);
@@ -828,6 +836,7 @@ function runDiagnosticsLoopback() {
     setTimeout(() => {
         try {
             const testPayload = 'PING_LOOPBACK_TEST_OK';
+            const { range } = getProtocolSelection();
             
             // 1. Test wave modulation
             testResult.innerText += '\n[1/3] Modulating test signal...';
@@ -849,13 +858,41 @@ function runDiagnosticsLoopback() {
             const floatArray = convertTypedArray(waveformBuffer, Float32Array);
             testResult.innerText += ` OK (${floatArray.length} samples)`;
 
-            // 3. Test demodulation decoding loop
+            // 3. Test the same chunked receive path used by microphone capture
             testResult.innerText += '\n[3/3] Demodulating loopback...';
-            
-            // To simulate physical capture, we convert Float32 waveform values
-            // and pipe them directly into ggwave's decode function block
-            const samplesInt8 = convertTypedArray(floatArray, Int8Array);
-            const decodedBytes = ggwave.decode(ggwaveInstance, samplesInt8);
+
+            const chunkSize = 1024;
+            const rangeTools = window.WavestFrequencyRanges;
+            const playbackSamples = range === 'inaudible'
+                ? rangeTools.resampleBuffer(floatArray, rangeTools.INAUDIBLE_SHIFT_FACTOR)
+                : floatArray;
+            const paddedLength = Math.ceil(playbackSamples.length / chunkSize) * chunkSize + chunkSize * 4;
+            const capturedSamples = new Float32Array(paddedLength);
+            capturedSamples.set(playbackSamples);
+            const receiver = ggwave.init(ggwaveParameters);
+            const inaudiblePipeline = range === 'inaudible'
+                ? rangeTools.createInaudibleReceivePipeline(chunkSize)
+                : null;
+            let decodedBytes = null;
+
+            try {
+                for (let offset = 0; offset < capturedSamples.length; offset += chunkSize) {
+                    const capturedChunk = capturedSamples.subarray(offset, offset + chunkSize);
+                    const decodeChunks = inaudiblePipeline
+                        ? inaudiblePipeline.push(capturedChunk)
+                        : [capturedChunk];
+                    for (const decodeChunk of decodeChunks) {
+                        const candidate = ggwave.decode(receiver, convertTypedArray(decodeChunk, Int8Array));
+                        if (candidate && candidate.length > 0) {
+                            decodedBytes = candidate;
+                            break;
+                        }
+                    }
+                    if (decodedBytes) break;
+                }
+            } finally {
+                ggwave.free(receiver);
+            }
             
             if (decodedBytes && decodedBytes.length > 0) {
                 const text = new TextDecoder('utf-8').decode(decodedBytes);

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-02T23:09:34.843Z",
+  "generatedAt": "2026-08-02T23:45:53.421Z",
   "nodeVersion": "v22.22.3",
-  "durationMs": 1862,
+  "durationMs": 1950,
   "total": 108,
   "passed": 108,
   "failed": 0,
@@ -35,7 +35,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.06669608085620879,
       "encodedSamples": 45056,
-      "durationMs": 15.152875,
+      "durationMs": 26.26125,
       "decodedMessage": "A"
     },
     {
@@ -46,7 +46,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.06669608085620879,
       "encodedSamples": 45056,
-      "durationMs": 15.639083,
+      "durationMs": 20.536959,
       "decodedMessage": "A"
     },
     {
@@ -57,7 +57,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.06669608085620879,
       "encodedSamples": 45056,
-      "durationMs": 7.744375,
+      "durationMs": 9.806833,
       "decodedMessage": "A"
     },
     {
@@ -68,7 +68,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.06669608085620879,
       "encodedSamples": 45056,
-      "durationMs": 6.557,
+      "durationMs": 5.486458,
       "decodedMessage": "A"
     },
     {
@@ -79,7 +79,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.06669608085620879,
       "encodedSamples": 45056,
-      "durationMs": 5.387125,
+      "durationMs": 5.948583,
       "decodedMessage": "A"
     },
     {
@@ -90,7 +90,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.06669608085620879,
       "encodedSamples": 45056,
-      "durationMs": 5.126125,
+      "durationMs": 5.028041,
       "decodedMessage": "A"
     },
     {
@@ -101,7 +101,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.07435202804641494,
       "encodedSamples": 63488,
-      "durationMs": 8.2805,
+      "durationMs": 8.61125,
       "decodedMessage": "Wavest08"
     },
     {
@@ -112,7 +112,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.07435202804641494,
       "encodedSamples": 63488,
-      "durationMs": 11.837958,
+      "durationMs": 12.585333,
       "decodedMessage": "Wavest08"
     },
     {
@@ -123,7 +123,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.07435202804641494,
       "encodedSamples": 63488,
-      "durationMs": 13.162625,
+      "durationMs": 13.898459,
       "decodedMessage": "Wavest08"
     },
     {
@@ -134,7 +134,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.07435202804641494,
       "encodedSamples": 63488,
-      "durationMs": 12.965375,
+      "durationMs": 13.520459,
       "decodedMessage": "Wavest08"
     },
     {
@@ -145,7 +145,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.07435202804641494,
       "encodedSamples": 63488,
-      "durationMs": 13.029875,
+      "durationMs": 12.864,
       "decodedMessage": "Wavest08"
     },
     {
@@ -156,7 +156,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.07435202804641494,
       "encodedSamples": 63488,
-      "durationMs": 12.914042,
+      "durationMs": 13.317959,
       "decodedMessage": "Wavest08"
     },
     {
@@ -167,7 +167,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08120218310616237,
       "encodedSamples": 106496,
-      "durationMs": 8.475709,
+      "durationMs": 9.008916,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -178,7 +178,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08120218310616237,
       "encodedSamples": 106496,
-      "durationMs": 13.096209,
+      "durationMs": 14.722458,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -189,7 +189,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08120218310616237,
       "encodedSamples": 106496,
-      "durationMs": 13.201625,
+      "durationMs": 14.371625,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -200,7 +200,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08120218310616237,
       "encodedSamples": 106496,
-      "durationMs": 13.637708,
+      "durationMs": 14.719292,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -211,7 +211,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08120218310616237,
       "encodedSamples": 106496,
-      "durationMs": 13.233667,
+      "durationMs": 14.592834,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -222,7 +222,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08120218310616237,
       "encodedSamples": 106496,
-      "durationMs": 13.343042,
+      "durationMs": 14.754166,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -233,7 +233,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08488013109839448,
       "encodedSamples": 174080,
-      "durationMs": 9.029583,
+      "durationMs": 10.764083,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -244,7 +244,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08488013109839448,
       "encodedSamples": 174080,
-      "durationMs": 17.542292,
+      "durationMs": 18.810375,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -255,7 +255,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08488013109839448,
       "encodedSamples": 174080,
-      "durationMs": 17.28375,
+      "durationMs": 18.662625,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -266,7 +266,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08488013109839448,
       "encodedSamples": 174080,
-      "durationMs": 17.293666,
+      "durationMs": 18.056959,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -277,7 +277,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08488013109839448,
       "encodedSamples": 174080,
-      "durationMs": 17.435416,
+      "durationMs": 18.064792,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -288,7 +288,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08488013109839448,
       "encodedSamples": 174080,
-      "durationMs": 17.868833,
+      "durationMs": 18.645459,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -299,7 +299,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08691586211026085,
       "encodedSamples": 272384,
-      "durationMs": 10.6375,
+      "durationMs": 10.72225,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -310,7 +310,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08691586211026085,
       "encodedSamples": 272384,
-      "durationMs": 23.581375,
+      "durationMs": 24.068916,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -321,7 +321,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08691586211026085,
       "encodedSamples": 272384,
-      "durationMs": 23.530125,
+      "durationMs": 24.001792,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -332,7 +332,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08691586211026085,
       "encodedSamples": 272384,
-      "durationMs": 24.119208,
+      "durationMs": 25.865708,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -343,7 +343,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08691586211026085,
       "encodedSamples": 272384,
-      "durationMs": 23.987792,
+      "durationMs": 24.525167,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -354,7 +354,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08691586211026085,
       "encodedSamples": 272384,
-      "durationMs": 23.601291,
+      "durationMs": 24.566208,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -365,7 +365,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08791577185829881,
       "encodedSamples": 382976,
-      "durationMs": 12.60075,
+      "durationMs": 13.137333,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -376,7 +376,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08791577185829881,
       "encodedSamples": 382976,
-      "durationMs": 30.80075,
+      "durationMs": 31.420667,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -387,7 +387,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08791577185829881,
       "encodedSamples": 382976,
-      "durationMs": 30.914,
+      "durationMs": 31.589667,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -398,7 +398,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08791577185829881,
       "encodedSamples": 382976,
-      "durationMs": 30.965667,
+      "durationMs": 31.375417,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -409,7 +409,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08791577185829881,
       "encodedSamples": 382976,
-      "durationMs": 31.134208,
+      "durationMs": 31.897875,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -420,7 +420,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08791577185829881,
       "encodedSamples": 382976,
-      "durationMs": 30.523416,
+      "durationMs": 30.655916,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -431,7 +431,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.04661575900339905,
       "encodedSamples": 41461,
-      "durationMs": 2.886583,
+      "durationMs": 2.966041,
       "decodedMessage": "A"
     },
     {
@@ -442,7 +442,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.04661575900339905,
       "encodedSamples": 41461,
-      "durationMs": 4.754958,
+      "durationMs": 4.761292,
       "decodedMessage": "A"
     },
     {
@@ -453,7 +453,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.04661575900339905,
       "encodedSamples": 41461,
-      "durationMs": 5.240959,
+      "durationMs": 5.347083,
       "decodedMessage": "A"
     },
     {
@@ -464,7 +464,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.04661575900339905,
       "encodedSamples": 41461,
-      "durationMs": 4.723,
+      "durationMs": 4.724834,
       "decodedMessage": "A"
     },
     {
@@ -475,7 +475,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.04661575900339905,
       "encodedSamples": 41461,
-      "durationMs": 4.579333,
+      "durationMs": 4.532417,
       "decodedMessage": "A"
     },
     {
@@ -486,7 +486,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.04661575900339905,
       "encodedSamples": 41461,
-      "durationMs": 5.596417,
+      "durationMs": 5.670417,
       "decodedMessage": "A"
     },
     {
@@ -497,7 +497,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.05130308855682743,
       "encodedSamples": 58422,
-      "durationMs": 7.315083,
+      "durationMs": 7.258208,
       "decodedMessage": "Wavest08"
     },
     {
@@ -508,7 +508,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.05130308855682743,
       "encodedSamples": 58422,
-      "durationMs": 12.555834,
+      "durationMs": 12.698792,
       "decodedMessage": "Wavest08"
     },
     {
@@ -519,7 +519,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.05130308855682743,
       "encodedSamples": 58422,
-      "durationMs": 12.212917,
+      "durationMs": 12.6815,
       "decodedMessage": "Wavest08"
     },
     {
@@ -530,7 +530,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.05130308855682743,
       "encodedSamples": 58422,
-      "durationMs": 12.168625,
+      "durationMs": 12.096833,
       "decodedMessage": "Wavest08"
     },
     {
@@ -541,7 +541,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.05130308855682743,
       "encodedSamples": 58422,
-      "durationMs": 12.473625,
+      "durationMs": 13.438791,
       "decodedMessage": "Wavest08"
     },
     {
@@ -552,7 +552,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.05130308855682743,
       "encodedSamples": 58422,
-      "durationMs": 11.875167,
+      "durationMs": 12.210042,
       "decodedMessage": "Wavest08"
     },
     {
@@ -563,7 +563,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.05553297249344689,
       "encodedSamples": 97999,
-      "durationMs": 8.5495,
+      "durationMs": 9.122916,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -574,7 +574,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.05553297249344689,
       "encodedSamples": 97999,
-      "durationMs": 12.828,
+      "durationMs": 13.321167,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -585,7 +585,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.05553297249344689,
       "encodedSamples": 97999,
-      "durationMs": 13.113125,
+      "durationMs": 13.323917,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -596,7 +596,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.05553297249344689,
       "encodedSamples": 97999,
-      "durationMs": 13.3495,
+      "durationMs": 14.06925,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -607,7 +607,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.05553297249344689,
       "encodedSamples": 97999,
-      "durationMs": 13.1545,
+      "durationMs": 13.701042,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -618,7 +618,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.05553297249344689,
       "encodedSamples": 97999,
-      "durationMs": 13.242875,
+      "durationMs": 13.582667,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -629,7 +629,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.0579033996309271,
       "encodedSamples": 160191,
-      "durationMs": 10.132208,
+      "durationMs": 10.403834,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -640,7 +640,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.0579033996309271,
       "encodedSamples": 160191,
-      "durationMs": 17.193416,
+      "durationMs": 17.989958,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -651,7 +651,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.0579033996309271,
       "encodedSamples": 160191,
-      "durationMs": 17.246625,
+      "durationMs": 17.627041,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -662,7 +662,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.0579033996309271,
       "encodedSamples": 160191,
-      "durationMs": 17.581084,
+      "durationMs": 18.204709,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -673,7 +673,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.0579033996309271,
       "encodedSamples": 160191,
-      "durationMs": 16.904833,
+      "durationMs": 17.911667,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -684,7 +684,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.0579033996309271,
       "encodedSamples": 160191,
-      "durationMs": 18.456042,
+      "durationMs": 19.131667,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -695,7 +695,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.05924070612468989,
       "encodedSamples": 250652,
-      "durationMs": 11.657042,
+      "durationMs": 12.364959,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -706,7 +706,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.05924070612468989,
       "encodedSamples": 250652,
-      "durationMs": 23.007125,
+      "durationMs": 23.56775,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -717,7 +717,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.05924070612468989,
       "encodedSamples": 250652,
-      "durationMs": 23.665584,
+      "durationMs": 23.998,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -728,7 +728,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.05924070612468989,
       "encodedSamples": 250652,
-      "durationMs": 24.311458,
+      "durationMs": 24.907375,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -739,7 +739,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.05924070612468989,
       "encodedSamples": 250652,
-      "durationMs": 23.968334,
+      "durationMs": 24.652833,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -750,7 +750,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.05924070612468989,
       "encodedSamples": 250652,
-      "durationMs": 25.388792,
+      "durationMs": 26.071083,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -761,7 +761,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.05980692793495817,
       "encodedSamples": 352421,
-      "durationMs": 13.738708,
+      "durationMs": 13.86675,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -772,7 +772,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.05980692793495817,
       "encodedSamples": 352421,
-      "durationMs": 30.059,
+      "durationMs": 30.481875,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -783,7 +783,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.05980692793495817,
       "encodedSamples": 352421,
-      "durationMs": 29.608625,
+      "durationMs": 30.394459,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -794,7 +794,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.05980692793495817,
       "encodedSamples": 352421,
-      "durationMs": 29.671208,
+      "durationMs": 30.692084,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -805,7 +805,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.05980692793495817,
       "encodedSamples": 352421,
-      "durationMs": 30.764,
+      "durationMs": 31.580959,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -816,7 +816,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.05980692793495817,
       "encodedSamples": 352421,
-      "durationMs": 30.566583,
+      "durationMs": 31.348583,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -827,7 +827,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.06669608343509616,
       "encodedSamples": 45056,
-      "durationMs": 2.623084,
+      "durationMs": 2.683292,
       "decodedMessage": "A"
     },
     {
@@ -838,7 +838,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.06669608343509616,
       "encodedSamples": 45056,
-      "durationMs": 4.812584,
+      "durationMs": 5.583791,
       "decodedMessage": "A"
     },
     {
@@ -849,7 +849,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.06669608343509616,
       "encodedSamples": 45056,
-      "durationMs": 5.135416,
+      "durationMs": 4.89725,
       "decodedMessage": "A"
     },
     {
@@ -860,7 +860,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.06669608343509616,
       "encodedSamples": 45056,
-      "durationMs": 4.712333,
+      "durationMs": 4.761417,
       "decodedMessage": "A"
     },
     {
@@ -871,7 +871,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.06669608343509616,
       "encodedSamples": 45056,
-      "durationMs": 4.866833,
+      "durationMs": 5.009375,
       "decodedMessage": "A"
     },
     {
@@ -882,7 +882,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.06669608343509616,
       "encodedSamples": 45056,
-      "durationMs": 4.716416,
+      "durationMs": 5.673958,
       "decodedMessage": "A"
     },
     {
@@ -893,7 +893,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.07435203116154297,
       "encodedSamples": 63488,
-      "durationMs": 7.292209,
+      "durationMs": 7.1605,
       "decodedMessage": "Wavest08"
     },
     {
@@ -904,7 +904,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.07435203116154297,
       "encodedSamples": 63488,
-      "durationMs": 10.253625,
+      "durationMs": 11.168791,
       "decodedMessage": "Wavest08"
     },
     {
@@ -915,7 +915,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.07435203116154297,
       "encodedSamples": 63488,
-      "durationMs": 12.734584,
+      "durationMs": 12.644416,
       "decodedMessage": "Wavest08"
     },
     {
@@ -926,7 +926,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.07435203116154297,
       "encodedSamples": 63488,
-      "durationMs": 12.704167,
+      "durationMs": 12.709542,
       "decodedMessage": "Wavest08"
     },
     {
@@ -937,7 +937,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.07435203116154297,
       "encodedSamples": 63488,
-      "durationMs": 12.532292,
+      "durationMs": 12.160542,
       "decodedMessage": "Wavest08"
     },
     {
@@ -948,7 +948,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.07435203116154297,
       "encodedSamples": 63488,
-      "durationMs": 13.091208,
+      "durationMs": 13.153708,
       "decodedMessage": "Wavest08"
     },
     {
@@ -959,7 +959,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08120219337884531,
       "encodedSamples": 106496,
-      "durationMs": 8.581375,
+      "durationMs": 8.398792,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -970,7 +970,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08120219337884531,
       "encodedSamples": 106496,
-      "durationMs": 13.564375,
+      "durationMs": 13.659625,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -981,7 +981,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08120219337884531,
       "encodedSamples": 106496,
-      "durationMs": 13.445125,
+      "durationMs": 13.486542,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -992,7 +992,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08120219337884531,
       "encodedSamples": 106496,
-      "durationMs": 13.413208,
+      "durationMs": 12.964166,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -1003,7 +1003,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08120219337884531,
       "encodedSamples": 106496,
-      "durationMs": 13.759125,
+      "durationMs": 14.062459,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -1014,7 +1014,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08120219337884531,
       "encodedSamples": 106496,
-      "durationMs": 13.756833,
+      "durationMs": 14.512792,
       "decodedMessage": "Round-trip payload: 0123"
     },
     {
@@ -1025,7 +1025,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08488014322066274,
       "encodedSamples": 174080,
-      "durationMs": 9.617208,
+      "durationMs": 8.898291,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -1036,7 +1036,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08488014322066274,
       "encodedSamples": 174080,
-      "durationMs": 17.8755,
+      "durationMs": 17.867667,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -1047,7 +1047,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08488014322066274,
       "encodedSamples": 174080,
-      "durationMs": 17.878583,
+      "durationMs": 17.707375,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -1058,7 +1058,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08488014322066274,
       "encodedSamples": 174080,
-      "durationMs": 18.241625,
+      "durationMs": 18.434959,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -1069,7 +1069,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08488014322066274,
       "encodedSamples": 174080,
-      "durationMs": 17.258584,
+      "durationMs": 18.799792,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -1080,7 +1080,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08488014322066274,
       "encodedSamples": 174080,
-      "durationMs": 17.193125,
+      "durationMs": 18.121291,
       "decodedMessage": "Medium payload: 0123456789abcdefghijklmnopqrstuv"
     },
     {
@@ -1091,7 +1091,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08691589193637886,
       "encodedSamples": 272384,
-      "durationMs": 10.312792,
+      "durationMs": 11.020667,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -1102,7 +1102,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08691589193637886,
       "encodedSamples": 272384,
-      "durationMs": 23.770209,
+      "durationMs": 23.759875,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -1113,7 +1113,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08691589193637886,
       "encodedSamples": 272384,
-      "durationMs": 23.490167,
+      "durationMs": 24.210875,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -1124,7 +1124,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08691589193637886,
       "encodedSamples": 272384,
-      "durationMs": 23.767792,
+      "durationMs": 24.12025,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -1135,7 +1135,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08691589193637886,
       "encodedSamples": 272384,
-      "durationMs": 23.169458,
+      "durationMs": 23.57575,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -1146,7 +1146,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08691589193637886,
       "encodedSamples": 272384,
-      "durationMs": 23.482667,
+      "durationMs": 24.761042,
       "decodedMessage": "Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst"
     },
     {
@@ -1157,7 +1157,7 @@
       "noiseAmplitude": 0,
       "signalRms": 0.08791578537022064,
       "encodedSamples": 382976,
-      "durationMs": 12.2525,
+      "durationMs": 12.567458,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -1168,7 +1168,7 @@
       "noiseAmplitude": 0.01,
       "signalRms": 0.08791578537022064,
       "encodedSamples": 382976,
-      "durationMs": 29.959875,
+      "durationMs": 31.122958,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -1179,7 +1179,7 @@
       "noiseAmplitude": 0.025,
       "signalRms": 0.08791578537022064,
       "encodedSamples": 382976,
-      "durationMs": 30.511542,
+      "durationMs": 31.662625,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -1190,7 +1190,7 @@
       "noiseAmplitude": 0.05,
       "signalRms": 0.08791578537022064,
       "encodedSamples": 382976,
-      "durationMs": 30.487625,
+      "durationMs": 31.300166,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -1201,7 +1201,7 @@
       "noiseAmplitude": 0.075,
       "signalRms": 0.08791578537022064,
       "encodedSamples": 382976,
-      "durationMs": 30.077584,
+      "durationMs": 30.662459,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     },
     {
@@ -1212,7 +1212,7 @@
       "noiseAmplitude": 0.1,
       "signalRms": 0.08791578537022064,
       "encodedSamples": 382976,
-      "durationMs": 30.032458,
+      "durationMs": 30.464417,
       "decodedMessage": "Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop"
     }
   ]
