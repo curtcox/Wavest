@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wavest codec test results</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    body { margin: 0; background: #09090b; color: #f4f4f5; }
+    main { width: min(1180px, calc(100% - 32px)); margin: 48px auto; }
+    a { color: #c4b5fd; }
+    .eyebrow { color: #a1a1aa; font: 700 12px ui-monospace, monospace; letter-spacing: .16em; }
+    h1 { margin: 10px 0; font-size: clamp(30px, 6vw, 52px); }
+    .lede { max-width: 760px; color: #a1a1aa; line-height: 1.6; }
+    .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 28px 0; }
+    .card { padding: 20px; border: 1px solid #27272a; border-radius: 12px; background: #111113; }
+    .card strong { display: block; font-size: 30px; }
+    .card span { color: #a1a1aa; font-size: 13px; }
+    .table-wrap { overflow-x: auto; border: 1px solid #27272a; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; background: #111113; font-size: 13px; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid #27272a; text-align: left; white-space: nowrap; }
+    th { color: #a1a1aa; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    td:last-child { max-width: 340px; overflow: hidden; text-overflow: ellipsis; }
+    code { color: #d4d4d8; }
+    .status { font: 700 11px ui-monospace, monospace; }
+    .pass { color: #86efac; } .fail { color: #fda4af; }
+    footer { color: #71717a; margin-top: 20px; font-size: 12px; }
+    @media (max-width: 640px) { .summary { grid-template-columns: 1fr; } main { margin-top: 28px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="../">← Back to Wavest</a>
+    <p class="eyebrow">AUTOMATED CODEC VERIFICATION</p>
+    <h1>All round-trip tests passed</h1>
+    <p class="lede">Every case encodes a message with the bundled GGWave WebAssembly engine, adds deterministic Gaussian noise directly to the waveform, decodes it with a fresh receiver, and requires an exact byte-for-byte message match.</p>
+    <section class="summary" aria-label="Test summary">
+      <div class="card"><strong>36/36</strong><span>cases passed</span></div>
+      <div class="card"><strong>6</strong><span>message lengths (1, 8, 24, 48, 80, 120 bytes)</span></div>
+      <div class="card"><strong>6</strong><span>noise levels (0–10% RMS amplitude)</span></div>
+    </section>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Result</th><th>Bytes</th><th>Noise</th><th>Signal RMS</th><th>Samples</th><th>Time</th><th>Message</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>0.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>12.8 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>1.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>11.0 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>2.5%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>7.4 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>5.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>5.6 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>7.5%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>5.1 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>10.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>4.7 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>0.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>8.0 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>1.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>13.3 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>2.5%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>13.8 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>5.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>12.7 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>7.5%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>12.7 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>10.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>13.0 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>0.0%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>9.6 ms</td>
+            <td><code>Round-trip payload: 0123</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>1.0%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>14.1 ms</td>
+            <td><code>Round-trip payload: 0123</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>2.5%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>13.8 ms</td>
+            <td><code>Round-trip payload: 0123</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>5.0%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>14.3 ms</td>
+            <td><code>Round-trip payload: 0123</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>7.5%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>13.6 ms</td>
+            <td><code>Round-trip payload: 0123</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>10.0%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>14.6 ms</td>
+            <td><code>Round-trip payload: 0123</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>48</td>
+            <td>0.0%</td>
+            <td>0.0606</td>
+            <td>174,080</td>
+            <td>9.1 ms</td>
+            <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>48</td>
+            <td>1.0%</td>
+            <td>0.0606</td>
+            <td>174,080</td>
+            <td>18.4 ms</td>
+            <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>48</td>
+            <td>2.5%</td>
+            <td>0.0606</td>
+            <td>174,080</td>
+            <td>18.7 ms</td>
+            <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>48</td>
+            <td>5.0%</td>
+            <td>0.0606</td>
+            <td>174,080</td>
+            <td>18.3 ms</td>
+            <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>48</td>
+            <td>7.5%</td>
+            <td>0.0606</td>
+            <td>174,080</td>
+            <td>18.2 ms</td>
+            <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>48</td>
+            <td>10.0%</td>
+            <td>0.0606</td>
+            <td>174,080</td>
+            <td>19.1 ms</td>
+            <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>80</td>
+            <td>0.0%</td>
+            <td>0.0621</td>
+            <td>272,384</td>
+            <td>11.4 ms</td>
+            <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>80</td>
+            <td>1.0%</td>
+            <td>0.0621</td>
+            <td>272,384</td>
+            <td>24.5 ms</td>
+            <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>80</td>
+            <td>2.5%</td>
+            <td>0.0621</td>
+            <td>272,384</td>
+            <td>24.5 ms</td>
+            <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>80</td>
+            <td>5.0%</td>
+            <td>0.0621</td>
+            <td>272,384</td>
+            <td>24.4 ms</td>
+            <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>80</td>
+            <td>7.5%</td>
+            <td>0.0621</td>
+            <td>272,384</td>
+            <td>25.8 ms</td>
+            <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>80</td>
+            <td>10.0%</td>
+            <td>0.0621</td>
+            <td>272,384</td>
+            <td>24.0 ms</td>
+            <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>120</td>
+            <td>0.0%</td>
+            <td>0.0628</td>
+            <td>382,976</td>
+            <td>13.3 ms</td>
+            <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>120</td>
+            <td>1.0%</td>
+            <td>0.0628</td>
+            <td>382,976</td>
+            <td>44.1 ms</td>
+            <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>120</td>
+            <td>2.5%</td>
+            <td>0.0628</td>
+            <td>382,976</td>
+            <td>55.2 ms</td>
+            <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>120</td>
+            <td>5.0%</td>
+            <td>0.0628</td>
+            <td>382,976</td>
+            <td>31.4 ms</td>
+            <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>120</td>
+            <td>7.5%</td>
+            <td>0.0628</td>
+            <td>382,976</td>
+            <td>33.1 ms</td>
+            <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>120</td>
+            <td>10.0%</td>
+            <td>0.0628</td>
+            <td>382,976</td>
+            <td>31.1 ms</td>
+            <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer>Generated 2026-08-02T22:33:16.716Z · Node v22.22.3 · Protocol: GGWAVE_PROTOCOL_AUDIBLE_FAST · 48 kHz · encode volume 25</footer>
+  </main>
+</body>
+</html>

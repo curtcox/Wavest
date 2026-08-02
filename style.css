@@ -243,6 +243,19 @@ body {
     padding-right: 4px;
 }
 
+.test-results-link {
+    color: var(--accent-secondary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.test-results-link:hover,
+.test-results-link:focus-visible {
+    color: var(--text-primary);
+}
+
 /* --- Message Bubbles --- */
 .message {
     display: flex;
