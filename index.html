@@ -144,6 +144,15 @@
                     <small class="help-text">Plays a confirmation chime before transmitting data waves.</small>
                 </div>
 
+                <!-- Live keyboard transmission -->
+                <div class="settings-group">
+                    <div class="toggle-row">
+                        <label for="live-mode-toggle">Live Keyboard Mode</label>
+                        <input type="checkbox" id="live-mode-toggle" disabled>
+                    </div>
+                    <small id="live-mode-help" class="help-text">Polls the message field and queues each typed character for immediate audio transmission.</small>
+                </div>
+
                 <!-- Template Chips Settings -->
                 <div class="settings-group">
                     <div class="toggle-row">
@@ -198,6 +207,7 @@
 
     <!-- Core Scripts -->
     <script src="ggwave.js"></script>
+    <script src="live-mode.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

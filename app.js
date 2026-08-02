@@ -19,6 +19,7 @@ let rxGain = 1.0; // Microphone input gain multiplier
 let isCapturing = false;
 let isTransmitting = false;
 let soundFeedbackEnabled = true;
+let liveKeyboardQueue = null;
 
 // Secure Communication State
 let myCallsign = 'WavestUser';
@@ -57,6 +58,8 @@ const volumeVal = document.getElementById('volume-val');
 const sensitivityRange = document.getElementById('sensitivity-range');
 const sensitivityVal = document.getElementById('sensitivity-val');
 const soundFeedbackToggle = document.getElementById('sound-feedback-toggle');
+const liveModeToggle = document.getElementById('live-mode-toggle');
+const liveModeHelp = document.getElementById('live-mode-help');
 const loopbackTestBtn = document.getElementById('loopback-test-btn');
 const testResult = document.getElementById('test-result');
 const clearChatBtn = document.getElementById('clear-chat-btn');
@@ -84,6 +87,7 @@ window.addEventListener('DOMContentLoaded', () => {
             statusIndicator.className = 'status-dot online';
             statusText.innerText = 'ENGINE READY';
             sendBtn.disabled = false;
+            if (liveModeToggle) liveModeToggle.disabled = false;
             console.log('ggwave WASM engine loaded successfully');
             
             // Map protocol selection values to Emscripten Enum objects
@@ -153,8 +157,28 @@ function setupUIEventListeners() {
     // Send message triggers
     sendBtn.addEventListener('click', transmitMessage);
     messageInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') transmitMessage();
+        if (e.key === 'Enter' && !(liveKeyboardQueue && liveKeyboardQueue.enabled)) transmitMessage();
     });
+
+    if (window.WavestLiveMode && liveModeToggle) {
+        liveKeyboardQueue = new window.WavestLiveMode.LiveKeyboardQueue({
+            readValue: () => messageInput.value,
+            clearValue: () => { messageInput.value = ''; },
+            transmit: (character) => transmitText(character, { clearInput: false, feedback: false }),
+            onStateChange: updateLiveModeStatus,
+        });
+        liveModeToggle.addEventListener('change', () => {
+            if (liveModeToggle.checked) {
+                liveKeyboardQueue.start();
+                messageInput.placeholder = 'Type to transmit live...';
+                sendBtn.disabled = true;
+            } else {
+                liveKeyboardQueue.stop();
+                messageInput.placeholder = 'Type a message to transmit...';
+                sendBtn.disabled = !ggwave;
+            }
+        });
+    }
 
     // Capture Toggle Listener
     captureToggleBtn.addEventListener('click', toggleAudioCapture);
@@ -230,6 +254,17 @@ function setupUIEventListeners() {
         oscilloscopeCanvas.classList.remove('hidden');
         spectrogramCanvas.classList.add('hidden');
     });
+}
+
+function updateLiveModeStatus(state) {
+    if (!liveModeHelp) return;
+    if (!state.enabled) {
+        liveModeHelp.innerText = 'Polls the message field and queues each typed character for immediate audio transmission.';
+        return;
+    }
+    liveModeHelp.innerText = state.pendingCount > 0
+        ? `Live mode active · ${state.pendingCount} character${state.pendingCount === 1 ? '' : 's'} queued`
+        : 'Live mode active · ready for keyboard input';
 }
 
 function getProtocolSelection() {
@@ -563,13 +598,16 @@ function playTransmissionFeedback(callback) {
 }
 
 // Send text message (Modulation + Playback)
-async function transmitMessage() {
-    const text = messageInput.value.trim();
+function transmitMessage() {
+    return transmitText(messageInput.value.trim());
+}
+
+async function transmitText(text, { clearInput = true, feedback = true } = {}) {
     if (!text) return;
-    
+
     initAudio();
-    messageInput.value = '';
-    sendBtn.disabled = true;
+    if (clearInput) messageInput.value = '';
+    if (!(liveKeyboardQueue && liveKeyboardQueue.enabled)) sendBtn.disabled = true;
     isTransmitting = true;
 
     // Temporarily pause active capture while transmitting to prevent echoing
@@ -579,11 +617,22 @@ async function transmitMessage() {
     }
 
     // Prepare packet (with Callsign & optional encryption)
-    const packet = await prepareTransmitPacket(text);
+    let packet;
+    try {
+        packet = await prepareTransmitPacket(text);
+    } catch (error) {
+        isTransmitting = false;
+        sendBtn.disabled = !!(liveKeyboardQueue && liveKeyboardQueue.enabled);
+        throw error;
+    }
 
-    // Play visual transmission signals
-    playTransmissionFeedback(() => {
-        try {
+    return new Promise((resolve, reject) => {
+        // Play visual transmission signals
+        const playThenTransmit = feedback
+            ? playTransmissionFeedback
+            : (callback) => callback();
+        playThenTransmit(() => {
+            try {
             // Encode payload to waveform floats using the selected protocol ID
             const { range } = getProtocolSelection();
             const isInaudible = range === 'inaudible';
@@ -614,13 +663,14 @@ async function transmitMessage() {
                 // On complete callback
                 bufferSource.onended = () => {
                     isTransmitting = false;
-                    sendBtn.disabled = false;
+                    sendBtn.disabled = !!(liveKeyboardQueue && liveKeyboardQueue.enabled);
                     console.log('Transmission audio output finished.');
                     
                     // Restore microphone listening state
                     if (wasListening) {
                         rxStateText.innerText = 'Listening for incoming audio data...';
                     }
+                    resolve();
                 };
                 
                 // Display message in chat feed
@@ -687,8 +737,10 @@ async function transmitMessage() {
             console.error('Error during message transmission modulation:', encodeErr);
             appendSystemMessage('TRANSMIT ERROR', 'Data modulation failed. Try reducing message length.', true);
             isTransmitting = false;
-            sendBtn.disabled = false;
+            sendBtn.disabled = !!(liveKeyboardQueue && liveKeyboardQueue.enabled);
+            reject(encodeErr);
         }
+        });
     });
 }
 

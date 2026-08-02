@@ -33,7 +33,7 @@
     <a href="../">← Back to Wavest</a>
     <p class="eyebrow">AUTOMATED CODEC VERIFICATION</p>
     <h1>All round-trip tests passed</h1>
-    <p class="lede">Every case encodes a message with the bundled GGWave WebAssembly engine, adds deterministic Gaussian noise directly to the waveform, decodes it with a fresh receiver, and requires an exact byte-for-byte message match.</p>
+    <p class="lede">Every codec case encodes a message with the bundled GGWave WebAssembly engine, adds deterministic Gaussian noise directly to the waveform, decodes it with a fresh receiver, and requires an exact byte-for-byte message match. The companion live-mode integration test polls page input, queues typed characters, and passes each one through the same audio encode/decode path.</p>
     <section class="summary" aria-label="Test summary">
       <div class="card"><strong>36/36</strong><span>cases passed</span></div>
       <div class="card"><strong>6</strong><span>message lengths (1, 8, 24, 48, 80, 120 bytes)</span></div>
@@ -49,115 +49,115 @@
             <td>0.0%</td>
             <td>0.0476</td>
             <td>45,056</td>
-            <td>12.8 ms</td>
-            <td><code>A</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>1</td>
-            <td>1.0%</td>
-            <td>0.0476</td>
-            <td>45,056</td>
-            <td>11.0 ms</td>
-            <td><code>A</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>1</td>
-            <td>2.5%</td>
-            <td>0.0476</td>
-            <td>45,056</td>
-            <td>7.4 ms</td>
-            <td><code>A</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>1</td>
-            <td>5.0%</td>
-            <td>0.0476</td>
-            <td>45,056</td>
-            <td>5.6 ms</td>
-            <td><code>A</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>1</td>
-            <td>7.5%</td>
-            <td>0.0476</td>
-            <td>45,056</td>
-            <td>5.1 ms</td>
-            <td><code>A</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>1</td>
-            <td>10.0%</td>
-            <td>0.0476</td>
-            <td>45,056</td>
-            <td>4.7 ms</td>
-            <td><code>A</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>8</td>
-            <td>0.0%</td>
-            <td>0.0531</td>
-            <td>63,488</td>
-            <td>8.0 ms</td>
-            <td><code>Wavest08</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>8</td>
-            <td>1.0%</td>
-            <td>0.0531</td>
-            <td>63,488</td>
-            <td>13.3 ms</td>
-            <td><code>Wavest08</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>8</td>
-            <td>2.5%</td>
-            <td>0.0531</td>
-            <td>63,488</td>
-            <td>13.8 ms</td>
-            <td><code>Wavest08</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>8</td>
-            <td>5.0%</td>
-            <td>0.0531</td>
-            <td>63,488</td>
-            <td>12.7 ms</td>
-            <td><code>Wavest08</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>8</td>
-            <td>7.5%</td>
-            <td>0.0531</td>
-            <td>63,488</td>
-            <td>12.7 ms</td>
-            <td><code>Wavest08</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>8</td>
-            <td>10.0%</td>
-            <td>0.0531</td>
-            <td>63,488</td>
-            <td>13.0 ms</td>
-            <td><code>Wavest08</code></td>
-          </tr>
-          <tr>
-            <td><span class="status pass">PASS</span></td>
-            <td>24</td>
-            <td>0.0%</td>
-            <td>0.0580</td>
-            <td>106,496</td>
             <td>9.6 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>1.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>9.1 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>2.5%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>7.3 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>5.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>4.8 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>7.5%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>5.2 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>1</td>
+            <td>10.0%</td>
+            <td>0.0476</td>
+            <td>45,056</td>
+            <td>4.9 ms</td>
+            <td><code>A</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>0.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>7.8 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>1.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>11.4 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>2.5%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>13.7 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>5.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>12.6 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>7.5%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>12.3 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>8</td>
+            <td>10.0%</td>
+            <td>0.0531</td>
+            <td>63,488</td>
+            <td>12.3 ms</td>
+            <td><code>Wavest08</code></td>
+          </tr>
+          <tr>
+            <td><span class="status pass">PASS</span></td>
+            <td>24</td>
+            <td>0.0%</td>
+            <td>0.0580</td>
+            <td>106,496</td>
+            <td>8.3 ms</td>
             <td><code>Round-trip payload: 0123</code></td>
           </tr>
           <tr>
@@ -166,7 +166,7 @@
             <td>1.0%</td>
             <td>0.0580</td>
             <td>106,496</td>
-            <td>14.1 ms</td>
+            <td>13.1 ms</td>
             <td><code>Round-trip payload: 0123</code></td>
           </tr>
           <tr>
@@ -175,7 +175,7 @@
             <td>2.5%</td>
             <td>0.0580</td>
             <td>106,496</td>
-            <td>13.8 ms</td>
+            <td>13.0 ms</td>
             <td><code>Round-trip payload: 0123</code></td>
           </tr>
           <tr>
@@ -184,7 +184,7 @@
             <td>5.0%</td>
             <td>0.0580</td>
             <td>106,496</td>
-            <td>14.3 ms</td>
+            <td>14.0 ms</td>
             <td><code>Round-trip payload: 0123</code></td>
           </tr>
           <tr>
@@ -193,7 +193,7 @@
             <td>7.5%</td>
             <td>0.0580</td>
             <td>106,496</td>
-            <td>13.6 ms</td>
+            <td>13.4 ms</td>
             <td><code>Round-trip payload: 0123</code></td>
           </tr>
           <tr>
@@ -202,7 +202,7 @@
             <td>10.0%</td>
             <td>0.0580</td>
             <td>106,496</td>
-            <td>14.6 ms</td>
+            <td>13.4 ms</td>
             <td><code>Round-trip payload: 0123</code></td>
           </tr>
           <tr>
@@ -220,7 +220,7 @@
             <td>1.0%</td>
             <td>0.0606</td>
             <td>174,080</td>
-            <td>18.4 ms</td>
+            <td>17.4 ms</td>
             <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
           </tr>
           <tr>
@@ -229,7 +229,7 @@
             <td>2.5%</td>
             <td>0.0606</td>
             <td>174,080</td>
-            <td>18.7 ms</td>
+            <td>17.5 ms</td>
             <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
           </tr>
           <tr>
@@ -238,7 +238,7 @@
             <td>5.0%</td>
             <td>0.0606</td>
             <td>174,080</td>
-            <td>18.3 ms</td>
+            <td>17.5 ms</td>
             <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
           </tr>
           <tr>
@@ -247,7 +247,7 @@
             <td>7.5%</td>
             <td>0.0606</td>
             <td>174,080</td>
-            <td>18.2 ms</td>
+            <td>17.6 ms</td>
             <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
           </tr>
           <tr>
@@ -256,7 +256,7 @@
             <td>10.0%</td>
             <td>0.0606</td>
             <td>174,080</td>
-            <td>19.1 ms</td>
+            <td>18.2 ms</td>
             <td><code>Medium payload: 0123456789abcdefghijklmnopqrstuv</code></td>
           </tr>
           <tr>
@@ -265,7 +265,7 @@
             <td>0.0%</td>
             <td>0.0621</td>
             <td>272,384</td>
-            <td>11.4 ms</td>
+            <td>10.5 ms</td>
             <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
           </tr>
           <tr>
@@ -274,7 +274,7 @@
             <td>1.0%</td>
             <td>0.0621</td>
             <td>272,384</td>
-            <td>24.5 ms</td>
+            <td>24.1 ms</td>
             <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
           </tr>
           <tr>
@@ -283,7 +283,7 @@
             <td>2.5%</td>
             <td>0.0621</td>
             <td>272,384</td>
-            <td>24.5 ms</td>
+            <td>24.2 ms</td>
             <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
           </tr>
           <tr>
@@ -292,7 +292,7 @@
             <td>5.0%</td>
             <td>0.0621</td>
             <td>272,384</td>
-            <td>24.4 ms</td>
+            <td>24.7 ms</td>
             <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
           </tr>
           <tr>
@@ -301,7 +301,7 @@
             <td>7.5%</td>
             <td>0.0621</td>
             <td>272,384</td>
-            <td>25.8 ms</td>
+            <td>24.8 ms</td>
             <td><code>Long payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrst</code></td>
           </tr>
           <tr>
@@ -319,7 +319,7 @@
             <td>0.0%</td>
             <td>0.0628</td>
             <td>382,976</td>
-            <td>13.3 ms</td>
+            <td>12.5 ms</td>
             <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
           </tr>
           <tr>
@@ -328,7 +328,7 @@
             <td>1.0%</td>
             <td>0.0628</td>
             <td>382,976</td>
-            <td>44.1 ms</td>
+            <td>30.4 ms</td>
             <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
           </tr>
           <tr>
@@ -337,7 +337,7 @@
             <td>2.5%</td>
             <td>0.0628</td>
             <td>382,976</td>
-            <td>55.2 ms</td>
+            <td>30.9 ms</td>
             <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
           </tr>
           <tr>
@@ -346,7 +346,7 @@
             <td>5.0%</td>
             <td>0.0628</td>
             <td>382,976</td>
-            <td>31.4 ms</td>
+            <td>30.3 ms</td>
             <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
           </tr>
           <tr>
@@ -355,7 +355,7 @@
             <td>7.5%</td>
             <td>0.0628</td>
             <td>382,976</td>
-            <td>33.1 ms</td>
+            <td>32.3 ms</td>
             <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
           </tr>
           <tr>
@@ -364,13 +364,13 @@
             <td>10.0%</td>
             <td>0.0628</td>
             <td>382,976</td>
-            <td>31.1 ms</td>
+            <td>30.4 ms</td>
             <td><code>Maximum test payload: 0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnopqrstuvwxyz0123456789abcdefghijklmnop</code></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <footer>Generated 2026-08-02T22:33:16.716Z · Node v22.22.3 · Protocol: GGWAVE_PROTOCOL_AUDIBLE_FAST · 48 kHz · encode volume 25</footer>
+    <footer>Generated 2026-08-02T22:44:37.451Z · Node v22.22.3 · Protocol: GGWAVE_PROTOCOL_AUDIBLE_FAST · 48 kHz · encode volume 25</footer>
   </main>
 </body>
 </html>

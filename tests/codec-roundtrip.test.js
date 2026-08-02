@@ -123,7 +123,7 @@ function renderReport(report) {
     <a href="../">← Back to Wavest</a>
     <p class="eyebrow">AUTOMATED CODEC VERIFICATION</p>
     <h1>${report.failed === 0 ? 'All round-trip tests passed' : 'Round-trip failures detected'}</h1>
-    <p class="lede">Every case encodes a message with the bundled GGWave WebAssembly engine, adds deterministic Gaussian noise directly to the waveform, decodes it with a fresh receiver, and requires an exact byte-for-byte message match.</p>
+    <p class="lede">Every codec case encodes a message with the bundled GGWave WebAssembly engine, adds deterministic Gaussian noise directly to the waveform, decodes it with a fresh receiver, and requires an exact byte-for-byte message match. The companion live-mode integration test polls page input, queues typed characters, and passes each one through the same audio encode/decode path.</p>
     <section class="summary" aria-label="Test summary">
       <div class="card"><strong>${report.passed}/${report.total}</strong><span>cases passed</span></div>
       <div class="card"><strong>${report.messageLengths.length}</strong><span>message lengths (${report.messageLengths.join(', ')} bytes)</span></div>

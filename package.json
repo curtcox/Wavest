@@ -3,7 +3,7 @@
   "version": "0.91.0",
   "private": true,
   "scripts": {
-    "test": "node --test tests/codec-roundtrip.test.js",
-    "test:report": "TEST_REPORT_DIR=test-results node --test tests/codec-roundtrip.test.js"
+    "test": "node --test tests/*.test.js",
+    "test:report": "TEST_REPORT_DIR=test-results node --test tests/*.test.js"
   }
 }
