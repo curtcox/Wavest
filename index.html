@@ -103,18 +103,22 @@
             <div class="sidebar-content">
                 <!-- Protocol Selection -->
                 <div class="settings-group">
-                    <label for="protocol-select">Acoustic Protocol</label>
-                    <select id="protocol-select">
-                        <option value="0">Audible (Normal)</option>
-                        <option value="1" selected>Audible (Fast)</option>
-                        <option value="2">Audible (Fastest)</option>
-                        <option value="3">Ultrasound (Normal)</option>
-                        <option value="4">Ultrasound (Fast)</option>
-                        <option value="5">Ultrasound (Fastest)</option>
-                        <option value="6">Inaudible (Normal)</option>
-                        <option value="7">Inaudible (Fast)</option>
-                        <option value="8">Inaudible (Fastest)</option>
-                    </select>
+                    <fieldset class="radio-setting">
+                        <legend>Speed</legend>
+                        <div class="radio-options" role="radiogroup" aria-label="Transmission speed">
+                            <label><input type="radio" name="protocol-speed" value="0"><span>Normal</span></label>
+                            <label><input type="radio" name="protocol-speed" value="1" checked><span>Fast</span></label>
+                            <label><input type="radio" name="protocol-speed" value="2"><span>Fastest</span></label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="radio-setting">
+                        <legend>Frequency Range</legend>
+                        <div class="radio-options frequency-options" role="radiogroup" aria-label="Frequency range">
+                            <label><input type="radio" name="protocol-range" value="audible" checked><span>Audible</span></label>
+                            <label><input type="radio" name="protocol-range" value="inaudible"><span>Inaudible</span></label>
+                            <label><input type="radio" name="protocol-range" value="ultrasound"><span>Ultrasound</span></label>
+                        </div>
+                    </fieldset>
                     <small class="help-text">Audible protocols are robust in noisy rooms. Ultrasound (18kHz+) and Inaudible (20kHz+) ranges are silent to human ears, but may be less robust in some environments.</small>
                 </div>
 

@@ -50,7 +50,8 @@ const settingsSidebar = document.getElementById('settings-sidebar');
 const sidebarOverlay = document.getElementById('sidebar-overlay');
 const openSettingsBtn = document.getElementById('open-settings-btn');
 const closeSettingsBtn = document.getElementById('close-settings-btn');
-const protocolSelect = document.getElementById('protocol-select');
+const protocolSpeedRadios = document.querySelectorAll('input[name="protocol-speed"]');
+const protocolRangeRadios = document.querySelectorAll('input[name="protocol-range"]');
 const volumeRange = document.getElementById('volume-range');
 const volumeVal = document.getElementById('volume-val');
 const sensitivityRange = document.getElementById('sensitivity-range');
@@ -95,7 +96,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     4: ggwave.ProtocolId.GGWAVE_PROTOCOL_ULTRASOUND_FAST,
                     5: ggwave.ProtocolId.GGWAVE_PROTOCOL_ULTRASOUND_FASTEST
                 };
-                currentProtocolId = protocolsMap[1]; // Default to Audible (Fast)
+                updateProtocolSelection();
             }
             appendSystemMessage('SYSTEM DIAGNOSTICS', 'ggwave WebAssembly engine successfully initialized locally.');
         }).catch((err) => {
@@ -175,24 +176,8 @@ function setupUIEventListeners() {
     bindSecureSettingsListeners();
 
     // Settings Inputs Binding
-    protocolSelect.addEventListener('change', (e) => {
-        const val = parseInt(e.target.value);
-        // Map Inaudible (6, 7, 8) to base Ultrasound protocols (3, 4, 5)
-        const mappedVal = (val >= 6 && val <= 8) ? (val - 3) : val;
-        
-        if (protocolsMap && protocolsMap[mappedVal] !== undefined) {
-            currentProtocolId = protocolsMap[mappedVal];
-        }
-        const name = protocolSelect.options[protocolSelect.selectedIndex].text;
-        activeProtocolLbl.innerText = name.split(' ')[0].toUpperCase() + '_' + name.split(' ')[1].replace(/[()]/g, '').toUpperCase();
-        
-        // Re-initialize engine context parameters if active
-        if (ggwaveInstance && audioContext) {
-            ggwaveParameters.sampleRateInp = audioContext.sampleRate;
-            ggwaveParameters.sampleRateOut = audioContext.sampleRate;
-            ggwaveInstance = ggwave.init(ggwaveParameters);
-            ggwaveInstanceShifted = ggwave.init(ggwaveParameters);
-        }
+    [...protocolSpeedRadios, ...protocolRangeRadios].forEach((radio) => {
+        radio.addEventListener('change', updateProtocolSelection);
     });
 
     volumeRange.addEventListener('input', (e) => {
@@ -245,6 +230,32 @@ function setupUIEventListeners() {
         oscilloscopeCanvas.classList.remove('hidden');
         spectrogramCanvas.classList.add('hidden');
     });
+}
+
+function getProtocolSelection() {
+    const speed = parseInt(document.querySelector('input[name="protocol-speed"]:checked').value, 10);
+    const range = document.querySelector('input[name="protocol-range"]:checked').value;
+    return { speed, range };
+}
+
+function updateProtocolSelection() {
+    const { speed, range } = getProtocolSelection();
+    const protocolIndex = speed + (range === 'audible' ? 0 : 3);
+
+    if (protocolsMap && protocolsMap[protocolIndex] !== undefined) {
+        currentProtocolId = protocolsMap[protocolIndex];
+    }
+
+    const speedLabels = ['NORMAL', 'FAST', 'FASTEST'];
+    activeProtocolLbl.innerText = `${range.toUpperCase()}_${speedLabels[speed]}`;
+
+    // Re-initialize engine context parameters if active.
+    if (ggwaveInstance && audioContext) {
+        ggwaveParameters.sampleRateInp = audioContext.sampleRate;
+        ggwaveParameters.sampleRateOut = audioContext.sampleRate;
+        ggwaveInstance = ggwave.init(ggwaveParameters);
+        ggwaveInstanceShifted = ggwave.init(ggwaveParameters);
+    }
 }
 
 // Set up visualizer drawing loop
@@ -574,8 +585,8 @@ async function transmitMessage() {
     playTransmissionFeedback(() => {
         try {
             // Encode payload to waveform floats using the selected protocol ID
-            const val = parseInt(protocolSelect.value);
-            const isInaudible = (val >= 6 && val <= 8);
+            const { range } = getProtocolSelection();
+            const isInaudible = range === 'inaudible';
             const activeProto = currentProtocolId || (protocolsMap ? protocolsMap[1] : null);
             
             const waveformBuffer = ggwave.encode(

@@ -586,6 +586,62 @@ body {
     color: var(--text-primary);
 }
 
+.radio-setting {
+    border: 0;
+    min-width: 0;
+}
+
+.radio-setting legend {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.radio-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.radio-options.frequency-options {
+    grid-template-columns: 1fr;
+}
+
+.radio-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 8px 7px;
+    border: 1px solid var(--surface-border);
+    border-radius: var(--border-radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+.radio-options input[type="radio"] {
+    flex: 0 0 auto;
+    margin: 0;
+    accent-color: var(--accent-primary);
+}
+
+.radio-options span {
+    min-width: 0;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.radio-options label:has(input:checked) {
+    border-color: var(--accent-primary);
+    background: rgba(90, 77, 108, 0.24);
+}
+
+.radio-options label:focus-within {
+    outline: 2px solid rgba(168, 168, 175, 0.55);
+    outline-offset: 1px;
+}
+
 .settings-group input[type="text"],
 .settings-group input[type="password"],
 .settings-group textarea {
